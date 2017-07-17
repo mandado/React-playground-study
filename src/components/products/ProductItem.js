@@ -9,13 +9,13 @@ const itemStyle = {
 };
 
 const titleStyle = {
-    width: '75%',
+    width: '65%',
     margin: 0,
     color: '#3f50b5'
 };
 
 const priceStyle = {
-    width: '25%',
+    width: '35%',
     margin: 0,
     color: '#4caf50'
 };
@@ -26,11 +26,21 @@ const descriptionStyle = {
 };
 
 export default class ProductItem extends Component {
+    constructor(props) {
+        super(props);
+
+        this.clickItem = this.clickItem.bind(this);
+    }
+
+    clickItem() {
+        this.props.onItemClick(this.props.product);
+    }
+
     render() {
         return (
-            <li style={itemStyle}>
-                <h1 style={titleStyle}>Produto 00 1</h1>
-                <p style={priceStyle}>20,00 R$</p>
+            <li onClick={this.clickItem} style={itemStyle}>
+                <h1 style={titleStyle}>{this.props.product.name}</h1>
+                <p style={priceStyle}>{this.props.product.price} R$</p>
             </li>
         );
     }

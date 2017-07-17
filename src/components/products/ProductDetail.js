@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 const itemStyle = {
     borderBottom: '1px solid #EEE',
@@ -7,7 +8,7 @@ const itemStyle = {
 };
 
 const titleStyle = {
-    width: '80%',
+    width: '81%',
     float: 'left',
     height: 30,
     margin: 0,
@@ -17,7 +18,7 @@ const titleStyle = {
 const priceStyle = {
     height: 30,
     float: 'right',
-    width: '16%',
+    width: '19%',
     margin: 0,
     color: '#4caf50'
 };
@@ -28,17 +29,40 @@ const descriptionStyle = {
     width: '100%'
 };
 
-export default class ProductDetail extends Component {
-    render() {
-        return (
-            <section style={itemStyle}>
-                <h1 style={titleStyle}>Produto 00 1</h1>
-                <p style={priceStyle}>20,00 R$</p>
+const ProductDetailMarkup = (props) => (
+    <section style={itemStyle}>
+        <h1 style={titleStyle}>{props.detail.name}</h1>
+        <p style={priceStyle}>{props.detail.price} R$</p>
 
-                <p style={descriptionStyle}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto repellat ab eius assumenda repellendus, similique mollitia a cumque hic rerum porro nesciunt maiores quos nihil voluptatem odit vero, voluptate laudantium?
-                </p>
-            </section>
-        );
+        <p style={descriptionStyle}>
+            {props.detail.about}
+        </p>
+    </section>
+);
+
+export default class ProductDetail extends Component {
+    constructor(props) {
+        super(props);
     }
+
+    render() {
+        if (!this.props.detail) {
+            return (
+                <section style={itemStyle}>
+                    <p>Nenhum produto selecionado</p>
+                </section>
+            );
+        }
+
+        return <ProductDetailMarkup  detail={this.props.detail} />
+    }
+}
+
+ProductDetail.propTypes = {
+    detail: PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        about: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired
+    })
 }

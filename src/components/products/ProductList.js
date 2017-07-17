@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProductItem from './ProductItem';
+import PropTypes from 'prop-types';
 
 const ProductItemStyle = {
     width: '40%',
@@ -14,13 +15,22 @@ const listStyle = {
 };
 
 export default class ProductList extends Component {
+
     render() {
         return (
             <section id="product-add" style={ProductItemStyle}>
                 <ul style={listStyle}>
-                   {Array.from(Array(30).keys()).map(key => <ProductItem key={key}></ProductItem>)}
+                   {this.props.products.map(item => <ProductItem product={item} onItemClick={this.props.selectProduct}  key={item._id}></ProductItem>)}
                 </ul> 
             </section>
         );
     }
 }
+
+ProductList.propTypes = {
+    products: PropTypes.array
+};
+
+ProductList.defaultProps = {
+  products: []
+};
