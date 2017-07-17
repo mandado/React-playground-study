@@ -8,6 +8,11 @@ const itemStyle = {
     cursor: 'pointer'
 };
 
+const itemStyleSelected = {
+    ...itemStyle,
+    backgroundColor: '#e3f2fd'
+};
+
 const titleStyle = {
     width: '65%',
     margin: 0,
@@ -30,17 +35,24 @@ export default class ProductItem extends Component {
         super(props);
 
         this.clickItem = this.clickItem.bind(this);
+        this.isSelected = this.isSelected.bind(this);
     }
 
     clickItem() {
         this.props.onItemClick(this.props.product);
     }
 
+    isSelected(id) {
+        return this.props.selectedProduct && this.props.selectedProduct._id === id;
+    }
+
     render() {
+        const { name, price, _id } = this.props.product;
+
         return (
-            <li onClick={this.clickItem} style={itemStyle}>
-                <h1 style={titleStyle}>{this.props.product.name}</h1>
-                <p style={priceStyle}>{this.props.product.price} R$</p>
+            <li onClick={this.clickItem} style={this.isSelected(_id) && itemStyleSelected || itemStyle} >
+                <h1 style={titleStyle}>{name}</h1>
+                <p style={priceStyle}>{price} R$</p>
             </li>
         );
     }

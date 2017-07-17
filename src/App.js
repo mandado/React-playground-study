@@ -42,7 +42,7 @@ class App extends Component {
     return (
       <div style={styleApp}>
         <section id="product-area" style={productArea}>
-          <ProductList selectProduct={this.showProductDetail} products={this.state.products}></ProductList>
+          <ProductList selectProduct={this.showProductDetail} selectedProduct={this.state.detail} products={this.state.products}></ProductList>
           <ProductDetail detail={this.state.detail}></ProductDetail>
         </section>
       </div>

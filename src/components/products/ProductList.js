@@ -20,7 +20,7 @@ export default class ProductList extends Component {
         return (
             <section id="product-add" style={ProductItemStyle}>
                 <ul style={listStyle}>
-                   {this.props.products.map(item => <ProductItem product={item} onItemClick={this.props.selectProduct}  key={item._id}></ProductItem>)}
+                   {this.props.products.map(item => <ProductItem selectedProduct={this.props.selectedProduct} product={item} onItemClick={this.props.selectProduct}  key={item._id}></ProductItem>)}
                 </ul> 
             </section>
         );
@@ -28,9 +28,11 @@ export default class ProductList extends Component {
 }
 
 ProductList.propTypes = {
-    products: PropTypes.array
+    products: PropTypes.array,
+    selectedProduct: PropTypes.object
 };
 
 ProductList.defaultProps = {
-  products: []
+  products: [],
+  selectedProduct: null
 };
