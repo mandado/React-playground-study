@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ProductForm from './components/products/ProductForm';
+import ProductDetail from './components/products/ProductDetail';
 import ProductList from './components/products/ProductList';
 
 const styleApp = { 
@@ -24,8 +24,8 @@ class App extends Component {
     return (
       <div style={styleApp}>
         <section id="product-area" style={productArea}>
-          <ProductForm></ProductForm>
           <ProductList></ProductList>
+          <ProductDetail></ProductDetail>
         </section>
       </div>
     );

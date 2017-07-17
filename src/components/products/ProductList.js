@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import ProductItem from './ProductItem';
 
 const ProductItemStyle = {
-    width: '60%',
+    width: '40%',
+    borderRight: '1px solid #EEE',
 };
 
 const listStyle = {
@@ -17,14 +18,7 @@ export default class ProductList extends Component {
         return (
             <section id="product-add" style={ProductItemStyle}>
                 <ul style={listStyle}>
-                   <ProductItem></ProductItem>
-                   <ProductItem></ProductItem>
-                   <ProductItem></ProductItem>
-                   <ProductItem></ProductItem>
-                   <ProductItem></ProductItem>
-                   <ProductItem></ProductItem>
-                   <ProductItem></ProductItem>
-                   <ProductItem></ProductItem>
+                   {Array.from(Array(30).keys()).map(key => <ProductItem key={key}></ProductItem>)}
                 </ul> 
             </section>
         );
