@@ -19,13 +19,30 @@ const labelStyle = {
 };
 
 const inputStyle = {
-    padding: '10px 15px',
+    padding: '10px 13px',
     borderRadius: '3px',
     border: 'none',
-    // border: '1px solid #002984',
+    border: '1px solid #002984',
     fontSize: '15px',
-    width: 'calc(100% - 30px)',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.18), 0 -2px 4px rgba(0, 0, 0, 0.10)',
+    width: 'calc(100% - 28px)',
+    outline: 'none',
+    boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.06)',
+
+    ':focus': {
+        boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.10)',
+    }
+};
+
+const buttonStyle = {
+    borderRadius: '3px',
+    marginTop: 8,
+    backgroundColor: '#002984',
+    color: '#FFF',
+    border: 'none',
+    padding: '8px 16px',
+    fontSize: 16,
+    width: '100%',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.24)',
 };
 
 export default class ProductForm extends Component {
@@ -47,6 +64,9 @@ export default class ProductForm extends Component {
                             <label htmlFor="description" style={labelStyle}>Descrição</label>
                             <textarea id="description" style={inputStyle} cols="30" rows="10"></textarea>
                         </div>
+                        <button style={buttonStyle}>
+                            Salvar Produto
+                        </button>
                     </form>         
                 </div>   
             </section>

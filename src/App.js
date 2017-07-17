@@ -12,7 +12,7 @@ const styleApp = {
 
 const productArea = {
   boxShadow: '0 2px 4px rgba(0, 0, 0, 0.14)',
-  height: '500px',
+  height: '520px',
   width: '780px',
   fontFamily: 'Lato',
   justifyContent: 'center',
